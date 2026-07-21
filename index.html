@@ -1,160 +1,62 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aloft Privacy Policy</title>
   <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #f7f4ef;
-      --fg: #1d242b;
-      --muted: #5e6973;
-      --line: rgba(29, 36, 43, 0.16);
-      --link: #2867b2;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #10131a;
-        --fg: #edf0f5;
-        --muted: #aab3bf;
-        --line: rgba(237, 240, 245, 0.18);
-        --link: #8bbcff;
-      }
-    }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
-    }
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 48px 22px 72px;
-    }
-    h1 {
-      font-size: 32px;
-      line-height: 1.2;
-      margin: 0 0 8px;
-    }
-    h2 {
-      font-size: 20px;
-      margin: 34px 0 8px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-    }
-    p, li {
-      font-size: 16px;
-    }
-    .muted {
-      color: var(--muted);
-      margin-top: 0;
-    }
-    a {
-      color: var(--link);
-    }
+    :root { color-scheme: light dark; --bg:#f7f8fa; --fg:#17202a; --muted:#65717d; --line:#ccd4dc; --link:#1769aa; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#10141c; --fg:#eef2f6; --muted:#aab4bf; --line:#35404c; --link:#8bc7ff; } }
+    body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.65 system-ui,sans-serif; }
+    main { max-width:760px; margin:auto; padding:44px 22px 72px; }
+    nav { display:flex; gap:18px; flex-wrap:wrap; margin-bottom:34px; }
+    h1 { font-size:32px; line-height:1.2; margin:0 0 6px; }
+    h2 { font-size:20px; margin:32px 0 8px; padding-top:18px; border-top:1px solid var(--line); }
+    .muted { color:var(--muted); } a { color:var(--link); }
   </style>
 </head>
-<body>
-  <main>
-    <h1>Aloft Privacy Policy</h1>
-    <p class="muted">Effective date: July 16, 2026</p>
+<body><main>
+  <nav><strong>Privacy</strong><a href="terms.html">Terms</a><a href="sources.html">Data sources</a></nav>
+  <h1>Aloft Privacy Policy</h1>
+  <p class="muted">Effective date: July 21, 2026</p>
+  <p>Aloft (비행멍) is a quiet ambient-sky app. This policy describes the data used by the current Android app and the optional Message Plane service.</p>
 
-    <p>
-      Aloft, also known as 비행멍, is an ambient sky app designed for relaxation.
-      This policy explains what information the app uses and how it is handled.
-    </p>
+  <h2>Information Aloft uses</h2>
+  <p>Aloft does not require a personal account and does not ask for your name, email address, phone number, contacts, or advertising identifier.</p>
+  <ul>
+    <li><strong>Location:</strong> with permission, precise or approximate coordinates and device-reported altitude are used to render local time, weather, celestial objects, nearby aircraft, and a general place name. Fixed premium places can be used instead.</li>
+    <li><strong>App settings:</strong> visual, sound, download, notification, premium-entitlement, Message Plane, and wallpaper preferences are stored on the device.</li>
+    <li><strong>Message Plane identity:</strong> the app creates an app-scoped call sign and a random authentication secret. The relay stores the call sign and a one-way hash of the secret, not the secret itself.</li>
+    <li><strong>Messages:</strong> a recipient call sign, sender call sign, message text of up to 30 characters, and timestamps are processed when you send a Message Plane.</li>
+    <li><strong>Notifications:</strong> if enabled, an Android/Firebase Cloud Messaging token, platform, and language code are stored to deliver Message Plane alerts.</li>
+  </ul>
 
-    <h2>Information We Collect</h2>
-    <p>
-      Aloft does not require an account and does not ask you to provide your name,
-      email address, phone number, or other direct personal identifiers.
-    </p>
-    <p>
-      With your permission, Aloft may use your device location to render the sky
-      for your area, including sun, moon, star, weather, and general place-based
-      ambience. You can deny location permission; the app will continue to work
-      with a default location.
-    </p>
+  <h2>How location and network services are used</h2>
+  <p>The device may send coordinates directly to MET Norway for weather, BigDataCloud for reverse geocoding, and adsb.lol for nearby live-aircraft data. These providers receive the network information normally included in an internet request and process it under their own policies. Live aircraft positions are not relayed through or stored by the Aloft Message Plane server.</p>
+  <p>Aloft may contact its own relay for Message Plane delivery, route enrichment from public datasets, push registration, and optional ambience or cloud-asset downloads. Retired internal flight-diagnostic collectors have been removed; the current app does not upload observation coordinates or flight-filtering samples to the relay.</p>
 
-    <h2>How We Use Location</h2>
-    <p>
-      Location is used only to create the app experience, such as calculating the
-      sky appearance, local time, weather-influenced clouds, and a general city or
-      place label. Aloft does not sell your location data and does not use it for
-      advertising.
-    </p>
+  <h2>Message retention</h2>
+  <p>Message Plane text is transmitted over HTTPS but is <strong>not end-to-end encrypted</strong>. A pending message is kept only until it is claimed by the intended recipient or for a maximum of 24 hours, then deleted. Delivered and expired messages are removed during cleanup. Avoid sending personal, sensitive, illegal, or confidential information.</p>
+  <p>Inactive push tokens are removed after up to 90 days and are also removed when Message Plane notifications or receiving are disabled where the device can reach the relay. The app-scoped call-sign record remains so the same local installation can authenticate and receive messages.</p>
 
-    <h2>Third-Party Services</h2>
-    <p>
-      Aloft may request weather or place information from third-party services.
-      These requests can include coordinates or network information needed for the
-      service to respond.
-    </p>
-    <ul>
-      <li>MET Norway weather API, used for weather forecast data.</li>
-      <li>BigDataCloud reverse geocoding API, used to derive a general place name and timezone information.</li>
-    </ul>
-    <p>
-      These services process requests under their own terms and privacy practices.
-    </p>
+  <h2>Photos and captures</h2>
+  <p>Camera mode processes the camera preview on the device. Sky captures and camera composites are saved locally to the device's Pictures/Aloft collection when requested. Aloft does not upload those images to its relay.</p>
 
-    <h2>Data Storage and Retention</h2>
-    <p>
-      Aloft does not require a personal user account. App settings, such as
-      sound or ambience choices, may be stored locally on your device if needed
-      for the app experience.
-    </p>
-    <p>
-      Production builds do not send flight-visibility diagnostics. During
-      limited internal or pre-release testing, Aloft may temporarily store the
-      observation coordinates used by the app, device-reported elevation,
-      current or selected-location mode, and aggregate aircraft filtering
-      counts. These diagnostics do not include your Aloft Call Sign, message
-      content, aircraft identifiers, or individual aircraft coordinates. They
-      are automatically deleted after a rolling 14-day period and the collector
-      is removed when the investigated issue is resolved.
-    </p>
+  <h2>Payments</h2>
+  <p>Premium purchases and restoration are handled by Google Play. Aloft receives purchase and entitlement status needed to unlock features; it does not receive or store payment-card details.</p>
 
-    <h2>Advertising and Analytics</h2>
-    <p>
-      The current version of Aloft does not include advertising SDKs and does not
-      use third-party analytics SDKs.
-    </p>
+  <h2 id="security">Security</h2>
+  <p>Aloft uses HTTPS for supported network requests, stores only a hash of the Message Plane authentication secret on the relay, restricts message length and rate, and lets users disable receiving and notifications. No internet service can guarantee absolute security, and Message Plane should not be treated as a secure messenger.</p>
 
-    <h2>Payments and Premium Features</h2>
-    <p>
-      The current version is intended to launch as a free experience. If paid
-      features, subscriptions, or real flight-data features are added later, this
-      policy will be updated before those features are released.
-    </p>
+  <h2>Advertising, analytics, and children</h2>
+  <p>Aloft currently contains no advertising SDK and no third-party analytics SDK. Aloft is a general-audience ambient app and is not specifically directed to children. We do not knowingly request direct personal identifiers from children.</p>
 
-    <h2>Children</h2>
-    <p>
-      Aloft is not specifically directed to children. We do not knowingly collect
-      personal information from children.
-    </p>
+  <h2>Your choices</h2>
+  <p>You may revoke location, camera, photo, or notification permission in Android settings; disable Message Plane receiving; remove the app and its local settings; or contact us about the relay identity associated with your Aloft call sign. Some features will be limited when permissions or network access are unavailable.</p>
 
-    <h2>Your Choices</h2>
-    <p>
-      You can disable location access at any time in your device settings. If you
-      do so, Aloft will use a fallback location or limited location-aware
-      behavior.
-    </p>
+  <h2>Data sources and changes</h2>
+  <p>Licenses and provider links are listed on the <a href="sources.html">Data Sources</a> page. We may update this policy as Aloft changes and will revise the effective date above.</p>
 
-    <h2>Changes to This Policy</h2>
-    <p>
-      We may update this policy as Aloft changes. When we do, we will update the
-      effective date above.
-    </p>
-
-    <h2>Contact</h2>
-    <p>
-      If you have questions about this privacy policy, contact us at
-      <a href="mailto:ndr28s@nate.com">ndr28s@nate.com</a>.
-    </p>
-  </main>
-</body>
-</html>
+  <h2>Contact</h2>
+  <p>Questions or deletion requests: <a href="mailto:ndr28s@nate.com">ndr28s@nate.com</a></p>
+</main></body></html>
