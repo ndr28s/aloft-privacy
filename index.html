@@ -18,7 +18,7 @@
 <body><main>
   <nav><strong>Privacy</strong><a href="terms.html">Terms</a><a href="sources.html">Data sources</a></nav>
   <h1>Aloft Privacy Policy</h1>
-  <p class="muted">Effective date: July 21, 2026</p>
+  <p class="muted">Effective date: September 9, 2026</p>
   <p>Aloft (비행멍) is a quiet ambient-sky app. This policy describes the data used by the current Android app and the optional Message Plane service.</p>
 
   <h2>Information Aloft uses</h2>
@@ -27,7 +27,8 @@
     <li><strong>Location:</strong> with permission, precise or approximate coordinates and device-reported altitude are used to render local time, weather, celestial objects, nearby aircraft, and a general place name. Fixed premium places can be used instead.</li>
     <li><strong>App settings:</strong> visual, sound, download, notification, premium-entitlement, Message Plane, and wallpaper preferences are stored on the device.</li>
     <li><strong>Message Plane identity:</strong> the app creates an app-scoped call sign and a random authentication secret. The relay stores the call sign and a one-way hash of the secret, not the secret itself.</li>
-    <li><strong>Messages:</strong> a recipient call sign, sender call sign, message text of up to 30 characters, and timestamps are processed when you send a Message Plane.</li>
+    <li><strong>Messages:</strong> a recipient call sign, sender call sign, message text, and timestamps are processed when you send a Message Plane. Current app input is limited to 12 Unicode code points without splitting a composed character; older relay clients support up to 30 UTF-16 code units.</li>
+    <li><strong>Message safety:</strong> updated versions record your Message Plane terms version and acceptance time. The relay stores block relationships using app-scoped identity hashes, and a submitted report contains the received message, sender identity, reporter identity, reason, timestamps and review status. It does not use hardware identifiers to recognize a person.</li>
     <li><strong>Notifications:</strong> if enabled, an Android/Firebase Cloud Messaging token, platform, and language code are stored to deliver Message Plane alerts.</li>
   </ul>
 
@@ -37,6 +38,8 @@
 
   <h2>Message retention</h2>
   <p>Message Plane text is transmitted over HTTPS but is <strong>not end-to-end encrypted</strong>. A pending message is kept only until it is claimed by the intended recipient or for a maximum of 24 hours, then deleted. Delivered and expired messages are removed during cleanup. Avoid sending personal, sensitive, illegal, or confidential information.</p>
+  <p>For the reporting feature, a separate delivery receipt containing the message and app-scoped sender/recipient identifiers is retained for up to 24 hours after receipt. If you report that message, the report and its review record are retained for up to 90 days after submission. A reviewed messaging restriction expires no later than that report. Cleanup runs once per minute while the relay is running and on startup.</p>
+  <p>The app keeps at most 20 recent received messages available for 24 hours so you can report or block their senders. Expired local entries are removed when the app next opens or accesses this history. Block relationships remain until you unblock the sender or request identity deletion; terms acceptance remains with the app-scoped relay identity.</p>
   <p>Inactive push tokens are removed after up to 90 days and are also removed when Message Plane notifications or receiving are disabled where the device can reach the relay. The app-scoped call-sign record remains so the same local installation can authenticate and receive messages.</p>
 
   <h2>Photos and captures</h2>
@@ -46,17 +49,19 @@
   <p>Premium purchases and restoration are handled by Google Play. Aloft receives purchase and entitlement status needed to unlock features; it does not receive or store payment-card details.</p>
 
   <h2 id="security">Security</h2>
-  <p>Aloft uses HTTPS for supported network requests, stores only a hash of the Message Plane authentication secret on the relay, restricts message length and rate, and lets users disable receiving and notifications. No internet service can guarantee absolute security, and Message Plane should not be treated as a secure messenger.</p>
+  <p>Aloft uses HTTPS for supported network requests, stores only a hash of the Message Plane authentication secret on the relay, restricts message length and rate, and lets users disable receiving and notifications. Updated versions also let recipients report a received message and block or unblock a sender. Blocking follows the same app identity across call-sign changes, but clearing app data or reinstalling can create a new identity. Notifications already delivered by the operating system may remain. No internet service can guarantee absolute security, and Message Plane should not be treated as a secure messenger.</p>
 
   <h2>Advertising, analytics, and children</h2>
   <p>Aloft currently contains no advertising SDK and no third-party analytics SDK. Aloft is a general-audience ambient app and is not specifically directed to children. We do not knowingly request direct personal identifiers from children.</p>
 
   <h2>Your choices</h2>
+  <p>In updated versions, use Settings &gt; Receive messages to pause all incoming messages and message alerts. Turning it off removes pending messages; they will not be replayed when you turn it back on. Use Message safety in the message panel or Settings to report received messages and manage blocked senders. A report is disclosed to the Aloft operator for moderation; it does not automatically block the sender.</p>
   <p>You may revoke location, camera, photo, or notification permission in Android settings; disable Message Plane receiving; remove the app and its local settings; or contact us about the relay identity associated with your Aloft call sign. Some features will be limited when permissions or network access are unavailable.</p>
 
   <h2>Data sources and changes</h2>
   <p>Licenses and provider links are listed on the <a href="sources.html">Data Sources</a> page. We may update this policy as Aloft changes and will revise the effective date above.</p>
 
   <h2>Contact</h2>
+  <p lang="ko">메시지 보호 안내: 최신 버전의 설정에서 ‘메시지 받기’를 끄거나, 메신저·설정의 ‘신고·차단’에서 발신자를 차단·해제할 수 있습니다. 차단은 같은 앱 신원의 호출부호 변경에도 유지되지만 재설치로 만들어진 새 신원까지 식별하지는 않습니다. 신고용 수신 기록은 수신 후 최대 24시간, 직접 접수한 신고는 검토를 위해 최대 90일 보관합니다. 개인정보 삭제·신고 관련 문의는 아래 이메일로 보내주세요.</p>
   <p>Questions or deletion requests: <a href="mailto:ndr28s@nate.com">ndr28s@nate.com</a></p>
 </main></body></html>
